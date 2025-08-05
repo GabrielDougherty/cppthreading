@@ -6,7 +6,7 @@ This project is set up to practice C++ threading concepts.
 
 ### Prerequisites
 
-Install Nix then get into the shell with `nix develop`. For integration with VS Code I use the "Nix Environment Selector". I'm using Nix to get a newer compiler version so I can play around with C++23 featuers like `std::println`.
+Install Nix then get into the shell with `nix develop`. For integration with VS Code I use the "Nix Environment Selector". I'm using Nix to get a newer compiler version so I can play around with C++23 features like `std::println`.
 
 ### Build Commands
 
@@ -27,22 +27,22 @@ Or build specific targets:
 ninja atomic_example
 ```
 
-### Run Commands
+### Run
 
 Run the main executable:
 ```bash
 ./atomic_example
 ```
 
-Run specific examples:
-```bash
-./mutex_example
-./condition_variable_example
-./thread_pool_example
-./atomic_example
-```
+## Progress
+
+- [x] SPSC lock free queue
+
+Not sure what else to list here yet
 
 ## Threading Concepts to Practice
+
+This is just an AI generated list, probably of limited use, might delete later.
 
 1. **Basic Thread Creation and Management**
    - `std::thread` creation and joining
@@ -67,10 +67,7 @@ Run specific examples:
    - Futures and promises
    - Cooperative cancellation with `std::stop_token` (C++23)
 
-## Notes
+## License
 
-- All targets are configured to link against pthreads using CMake's `Threads::Threads`
-- C++23 standard is enabled for modern threading features
-- Compiler warnings are enabled for better code quality
-- The project is ready for implementing various threading examples
+MIT
 

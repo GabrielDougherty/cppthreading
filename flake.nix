@@ -12,36 +12,35 @@
       {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            llvm_18
-            clang_18
+            gcc14
             cmake
             ninja
             pkg-config
             # Language servers for better VS Code integration
-            clang-tools_18  # includes clangd
+            clang-tools  # includes clangd, works well with gcc too
             cmake-language-server
           ];
           
           shellHook = ''
-            export CC=clang
-            export CXX=clang++
-            export CMAKE_C_COMPILER=${pkgs.clang_18}/bin/clang
-            export CMAKE_CXX_COMPILER=${pkgs.clang_18}/bin/clang++
+            export CC=gcc
+            export CXX=g++
+            export CMAKE_C_COMPILER=${pkgs.gcc14}/bin/gcc
+            export CMAKE_CXX_COMPILER=${pkgs.gcc14}/bin/g++
             
             # Create VS Code settings if they don't exist
             mkdir -p .vscode
             cat > .vscode/settings.json << EOF
             {
-                "C_Cpp.default.compilerPath": "${pkgs.clang_18}/bin/clang++",
+                "C_Cpp.default.compilerPath": "${pkgs.gcc14}/bin/g++",
                 "C_Cpp.default.cppStandard": "c++23",
-                "C_Cpp.default.intelliSenseMode": "clang-x64",
+                "C_Cpp.default.intelliSenseMode": "gcc-x64",
                 "cmake.configureOnOpen": true,
                 "cmake.generator": "Ninja",
-                "clangd.path": "${pkgs.clang-tools_18}/bin/clangd"
+                "clangd.path": "${pkgs.clang-tools}/bin/clangd"
             }
             EOF
             
-            echo "C++ development environment loaded with LLVM 18"
+            echo "C++ development environment loaded with GCC 14"
             echo "VS Code settings updated automatically"
           '';
         };
