@@ -1,25 +1,12 @@
 # C++ Threading Practice Project
 
-This project is set up to practice C++ threading concepts using CMake as the build system.
-
-## Project Structure
-
-- `main.cpp` - Main entry point for the project
-- `examples/` - Directory containing example implementations for different threading concepts
-  - `mutex_example.cpp` - Mutex and lock examples
-  - `condition_variable_example.cpp` - Condition variable examples
-  - `thread_pool_example.cpp` - Thread pool implementation examples
-  - `atomic_example.cpp` - Atomic operations examples
+This project is set up to practice C++ threading concepts.
 
 ## Building and Running
 
 ### Prerequisites
 
-Make sure you have CMake installed. On macOS, you can install it using:
-
-```bash
-brew install cmake
-```
+Install Nix then get into the shell with `nix develop`. For integration with VS Code I use the "Nix Environment Selector". I'm using Nix to get a newer compiler version so I can play around with C++23 featuers like `std::println`.
 
 ### Build Commands
 
@@ -27,28 +14,24 @@ Create a build directory and configure the project:
 ```bash
 mkdir build
 cd build
-cmake ..
+cmake -G Ninja ..
 ```
 
 Build all targets:
 ```bash
-make
+ninja
 ```
 
 Or build specific targets:
 ```bash
-make threading_practice
-make mutex_example
-make condition_variable_example
-make thread_pool_example
-make atomic_example
+ninja atomic_example
 ```
 
 ### Run Commands
 
 Run the main executable:
 ```bash
-./threading_practice
+./atomic_example
 ```
 
 Run specific examples:
@@ -91,17 +74,3 @@ Run specific examples:
 - Compiler warnings are enabled for better code quality
 - The project is ready for implementing various threading examples
 
-## Alternative Build with Make
-
-If you prefer using make directly without cmake, you can use:
-
-```bash
-# Build main program
-g++ -std=c++23 -Wall -Wextra -O2 -pthread -o threading_practice main.cpp
-
-# Build examples
-g++ -std=c++23 -Wall -Wextra -O2 -pthread -o mutex_example examples/mutex_example.cpp
-g++ -std=c++23 -Wall -Wextra -O2 -pthread -o condition_variable_example examples/condition_variable_example.cpp
-g++ -std=c++23 -Wall -Wextra -O2 -pthread -o thread_pool_example examples/thread_pool_example.cpp
-g++ -std=c++23 -Wall -Wextra -O2 -pthread -o atomic_example examples/atomic_example.cpp
-```

@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <chrono>
 #include <random>
+#include <print>
 
 template<typename T, size_t Size>
 class SPSCQueue {
@@ -118,7 +119,7 @@ int main() {
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
     
-    std::cout << "\n=== SPSC Queue Test Results ===\n";
+    std::println("\n=== SPSC Queue Test Results ===");
     std::cout << "Items produced: " << items_produced.load() << "\n";
     std::cout << "Items consumed: " << items_consumed.load() << "\n";
     std::cout << "Test duration: " << duration.count() << " ms\n";

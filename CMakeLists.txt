@@ -14,7 +14,7 @@ if(DEFINED ENV{CXX} AND NOT "$ENV{CXX}" STREQUAL "")
     set(CMAKE_CXX_COMPILER $ENV{CXX})
 endif()
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Use libc++ instead of libstdc++
